@@ -14,9 +14,9 @@ jobs:
         uses: azure/setup-kubectl@v4
         with:
           version: 'latest'
-        id: install
 
       - name: Get POD info
         run: |
           export KUBECONFIG=${{ secrets.KUBECONFIG }}
+          kubectl --version
           kubectl get pods
