@@ -1,0 +1,26 @@
+# nginx-one.yaml
+apiVersion: apps/v1 # yaml versioned schema
+kind: Deployment # describe resource defined
+metadata:
+  name: nginx
+  labels:
+    app: nginx # required string, defines object within namespace
+  namespace: webapps #existing namespace to deploy resource to
+spec:
+  selector:
+    matchLabels:
+      app: nginx # label for deployment to manage
+  replicas: 1 # how many pods
+  template:
+    metadata:
+      labels:
+        app: nginx
+        system: webapps # string meaningful to users, not cluster, unique for each object, allows mapping to customer needs
+    spec:
+      containers:
+      - image: nginx:1.20.1
+        imagePullPolicy: Always
+        name: nginx # unique name for each container
+        ports:
+        - containerPort: 80
+          protocol: TCP
