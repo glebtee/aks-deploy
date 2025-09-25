@@ -13,7 +13,8 @@ jobs:
       - name: Set Up kubectl
         uses: azure/setup-kubectl@v4
         with:
-          version: '1.28.2'
+          version: 'v1.28.2'
+        id: install
 
       - name: Get POD info
         run: |
