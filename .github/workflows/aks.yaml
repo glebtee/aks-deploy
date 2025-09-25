@@ -18,5 +18,7 @@ jobs:
 
       - name: Get POD info
         run: |
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBECONFIG }}" | base64 --decode > ~/.kube/config
           kubectl version
           kubectl get pods
