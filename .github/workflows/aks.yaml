@@ -18,5 +18,5 @@ jobs:
       - name: Get POD info
         run: |
           export KUBECONFIG=${{ secrets.KUBECONFIG }}
-          kubectl --version
+          kubectl version
           kubectl get pods
