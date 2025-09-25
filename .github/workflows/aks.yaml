@@ -23,5 +23,5 @@ jobs:
 
       - name: Get POD info
         run: |
-          kubectl version
-          kubectl get pods
+          kubectl apply -f k8s/nginx-deploy.yaml
+          kubectl apply -f k8s/lb-service.yaml
