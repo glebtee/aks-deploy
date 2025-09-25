@@ -16,13 +16,13 @@ jobs:
           version: 'v1.28.2'
         id: install
 
-      - uses: azure/k8s-set-context@v4
+      - name: Set up Context
+        uses: azure/k8s-set-context@v4
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBECONFIG }}
 
-      - name: Get POD info
+      - name: Deploy to Cluster
         run: |
-          ls -la
           kubectl apply -f k8s/nginx-deploy.yaml
           kubectl apply -f k8s/lb-svc.yaml
