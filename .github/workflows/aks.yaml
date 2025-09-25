@@ -16,9 +16,12 @@ jobs:
           version: 'v1.28.2'
         id: install
 
+      - uses: azure/k8s-set-context@v4
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBECONFIG }}
+
       - name: Get POD info
         run: |
-          mkdir -p ~/.kube
-          echo "${{ secrets.KUBECONFIG }}" | base64 --decode > ~/.kube/config
           kubectl version
           kubectl get pods
